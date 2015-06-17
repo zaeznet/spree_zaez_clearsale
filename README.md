@@ -1,8 +1,8 @@
-Spree Clearsale
+Spree Clearsale [![Build Status](https://travis-ci.org/zaeznet/spree_zaez_clearsale.svg?branch=master)](https://travis-ci.org/zaeznet/spree_zaez_clearsale)
 ==================
 
 Implementation of ClearSale Start to Spree.
-To see the docs, [click here](http://www.clearsale.com.br/start/manual/Start_Manual_Integracao.pdf)
+To see the docs, [click here](http://www.clearsale.com.br/start/manual/Start_Manual_Integracao.pdf).
 
 This gem needs the customer's document (CPF/CNPJ), which is represented by the setting Spree::ClearSaleConfig[:doc_customer_attr].
 It's recommended use the gem [spree_zaez_brazilian_fields](https://github.com/zaeznet/spree_zaez_brazilian_fields) for that.

@@ -1,0 +1,36 @@
+en:
+  clear_sale: ClearSale
+  clear_sale_settings: ClearSale Settings
+  spree:
+    clear_sale: ClearSale
+    clear_sale_settings: ClearSale Settings
+    clearsale_score: ClearSale Score
+    clearsale_score_low: Low
+    clearsale_score_medium: Medium
+    clearsale_score_high: High
+    clearsale_score_critical: Critical
+    state: State
+    state_true:  Enable
+    state_false: Disable
+    token: Token
+    test_mode: Active Test Mode
+    payment_methods: Payment Methods
+    doc_customer_attr: Document Customer Attribute
+    enable_birth_date: Enable Birth Date Customer Attribute
+    birth_date_customer_attr: Birth Date Customer Attribute
+    payment_type_1:  Credit Card
+    payment_type_2:  Bank Slip
+    payment_type_3:  Debt Bank
+    payment_type_4:  Debt Bank – Cash
+    payment_type_5:  Debt Bank – Check
+    payment_type_6:  Transfer Bank
+    payment_type_7:  Sedex to Charge
+    payment_type_8:  Check
+    payment_type_9:  Cash
+    payment_type_10: Financing
+    payment_type_11: Order
+    payment_type_12: Coupon
+    payment_type_13: Multiple Checks
+    payment_type_14: Others
+    enable_category_taxonomy: There is a taxonomy which represents the categories
+    category_taxonomy_id: Taxonomy wich represents the categories

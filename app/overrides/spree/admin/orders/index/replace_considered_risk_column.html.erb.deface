@@ -1,0 +1,2 @@
+<!-- replace "th erb[loud]:contains('sort_link @search, :considered_risky')" -->
+<%= Spree.t(:clearsale_score) %>

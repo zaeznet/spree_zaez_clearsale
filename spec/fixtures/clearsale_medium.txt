@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Start</title>
+    <link href="Css/estrutura.css" rel="stylesheet" type="text/css" />
+    <link href="Css/tema.css" rel="stylesheet" type="text/css" />
+    <script src="http://js.clearsale.com.br/html4/v1/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#logoLink').click(function () {
+                var url = 'http://homologacao.clearsale.com.br/Start/Pedidos/VisualizarPedido?token=xxx';
+                if(url.length > 0)
+                {
+                    window.open(url, '_blank');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <form method="post" action="EnviarPedido.aspx" id="ctl00">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="xxx" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="04606CF5" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="xxx" />
+    <div class="divPrincipal">
+        <div id="cabecalho">
+            <div class="divLogo">
+                <img id="logoLink" style="cursor:pointer" alt="" class="logo" src="http://img.clearsale.com.br/logo/start.png" />
+            </div>
+            <div class="divScore score-medio">
+                MÉDIO
+            </div>
+
+        </div>
+        <div id="conteudo">
+            <div id="PnlBotoes" class="divBotoes">
+
+                <input type="submit" name="BtnAprovar" value="Aprovar" onclick="return confirm($(&#39;#HdfMensagemAprovar&#39;).val());" id="BtnAprovar" class="botaoFrame botaoAprovar" />
+                <input type="submit" name="BtnReprovar" value="Reprovar" onclick="return confirm($(&#39;#HdfMensagemReprovar&#39;).val());" id="BtnReprovar" class="botaoFrame botaoReprovar" />
+                <input type="submit" name="BtnDecisao" value="Decisão Garantida" onclick="return confirm($(&#39;#HdfMensagemDecisao&#39;).val());" id="BtnDecisao" class="botaoFrame botaoDecisao" />
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="HdfClasseScore" id="HdfClasseScore" value="score-critico" />
+    <input type="hidden" name="HdfMensagemAprovar" id="HdfMensagemAprovar" value="Deseja aprovar esse pedido?" />
+    <input type="hidden" name="HdfMensagemReprovar" id="HdfMensagemReprovar" value="Deseja reprovar esse pedido?" />
+    <input type="hidden" name="HdfMensagemDecisao" id="HdfMensagemDecisao" value="Deseja enviar esse pedido para análise ClearSale? Operação sujeita a cobrança." />
+    </form>
+</body>
+</html>

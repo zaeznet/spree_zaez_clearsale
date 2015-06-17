@@ -1,0 +1,6 @@
+<!-- replace 'td:nth-child(3)' -->
+<td>
+  <% order.payments.each do |payment| %>
+    <%= clearsale_score_label payment.clearsale_score %>
+  <% end %>
+</td>

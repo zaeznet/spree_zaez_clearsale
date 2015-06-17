@@ -1,0 +1,4 @@
+<!-- insert_after ".inner" -->
+<script type='text/javascript'>
+  new window.PhoneMaskAddress();
+</script>

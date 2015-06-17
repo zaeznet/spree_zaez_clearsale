@@ -1,0 +1,142 @@
+<%= render :partial => 'spree/admin/shared/sub_menu/configuration' %>
+
+<% content_for :page_title do %>
+    <%= Spree.t(:clear_sale_settings) %>
+<% end %>
+
+<script type='text/template' id='clear_sale_provider_template'>
+  {{#each providers}}
+  <tr>
+    <td>{{provider.text}}</td>
+    <td>{{payment_type.text}}</td>
+    <td class='actions actions-1 text-center'>
+      <button class='icon_link btn btn-danger btn-sm clear_sale_remove_provider' data-provider='{{provider.id}}'>
+        <span class='icon icon-delete' data-provider='{{provider.id}}'></span>
+      </button>
+      <input type='hidden' id='providers[]' name='providers[]' value='{{provider.id}}'>
+      <input type='hidden' id='payment_types[]' name='payment_types[]' value='{{payment_type.id}}'>
+    </td>
+  </tr>
+  {{/each}}
+</script>
+
+<%= form_tag admin_clear_sale_settings_path, :method => :put  do |form| %>
+    <div id="clear_sale_preferences" data-hook="clear_sale_preferences">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">
+            <%= Spree.t(:settings) %>
+          </h1>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <%= label_tag(:state, Spree.t(:state) + ': ') + tag(:br) %>
+              <%= radio_button_tag :state, true, @config.state %>
+              <%= label_tag(:state_true, Spree.t(:state_true)) %>
+              <%= radio_button_tag :state, false, @config.state == false %>
+              <%= label_tag(:state_false, Spree.t(:state_false)) %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= label_tag(:token, Spree.t(:token) + ': ') + tag(:br) %>
+              <%= text_field_tag :token, @config.token, class: 'form-control' %>
+            </div>
+            <div class="col-sm-6">
+              <%= label_tag(:doc_customer_attr, Spree.t(:doc_customer_attr) + ': ') + tag(:br) %>
+              <%= select_tag :doc_customer_attr,
+                             options_for_select(@user_attr.collect { |item| [t(item), item] }, @config.doc_customer_attr),
+                             class: 'select2', include_blank: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= check_box_tag :test_mode, true, @config.test_mode == true %>
+              <%= label_tag :test_mode, Spree.t(:test_mode) %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="col-sm-12 p-l-n p-r-n">
+                <%= check_box_tag :enable_birth_date, true, @config.birth_date_customer_attr.present? %>
+                <%= label_tag :enable_birth_date, Spree.t(:enable_birth_date) %>
+              </div>
+              <div class="col-sm-12 p-l-n p-r-n" id="birth_date_container">
+                <%= select_tag :birth_date_customer_attr,
+                               options_for_select(@user_attr.collect { |item| [t(item), item] }, @config.birth_date_customer_attr),
+                               class: 'select2', include_blank: true %>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="col-sm-12 p-l-n p-r-n">
+                <%= check_box_tag :enable_category_taxonomy, true, @config.category_taxonomy_id > 1 %>
+                <%= label_tag :enable_category_taxonomy, Spree.t(:enable_category_taxonomy) %>
+              </div>
+              <div class="col-sm-12 p-l-n p-r-n" id="category_taxonomy_container">
+                <%= select_tag :category_taxonomy_id,
+                               options_for_select(@taxonomies.collect { |item| [item.name, item.id] }, @config.category_taxonomy_id),
+                               class: 'select2', include_blank: true %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">
+            <%= Spree.t(:payment_methods) %>
+          </h1>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12 empty-fields-item" style="display: none">
+              <div class="alert alert-danger">
+                <%= Spree.t(:empty_fields_in_clear_sale_settings) %>.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= label_tag :provider, Spree.t(:provider) %>
+                <%= select_tag :provider,
+                               options_for_select(@providers.collect { |item| [item.to_s, item.name] }),
+                               class: 'select2' %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= label_tag :payment_type, Spree.t(:payment_type) %>
+                <div class="input-group">
+                  <%= select_tag :payment_type,
+                                 options_for_select((1..14).collect { |item| [Spree.t("payment_type_#{item}"), item] }),
+                                 class: 'select2' %>
+                  <span class="input-group-btn">
+                <%= button Spree.t(:add), 'plus', 'submit', class: 'clear_sale_add_provider' %>
+                    </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="clear-sale-providers-table" style="display:none">
+        <table class="table table-bordered sortable">
+          <thead data-hook="clear_sale_providers_header">
+          <th><%= Spree.t(:provider) %></th>
+          <th><%= Spree.t(:payment_type) %></th>
+          <th class="actions"></th>
+          </thead>
+          <tbody id="clear_sale_providers_tbody">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: edit_admin_clear_sale_settings_url } %>
+<% end %>
+
+<script type='text/javascript'>
+  new window.ClearSaleSettings(<%= Spree::ClearSaleConfig.get_providers.html_safe %>);
+</script>

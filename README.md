@@ -1,7 +1,20 @@
 Spree Clearsale
 ==================
 
-Introduction goes here.
+Implementation of ClearSale Start to Spree.
+To see the docs, [click here](http://www.clearsale.com.br/start/manual/Start_Manual_Integracao.pdf)
+
+This gem needs the customer's document (CPF/CNPJ), which is represented by the setting Spree::ClearSaleConfig[:doc_customer_attr].
+It's recommended use the gem [spree_zaez_brazilian_fields](https://github.com/zaeznet/spree_zaez_brazilian_fields) for that.
+
+This gem does not support guest checkout. So disable this option in a config file:
+
+```ruby
+Spree::Config[:allow_guest_checkout] = false
+```
+
+In /admin/orders, the column considered risky of the order is overrided for the ClearSale score.
+
 
 Installation
 ------------
@@ -19,6 +32,41 @@ bundle
 bundle exec rails g spree_zaez_clearsale:install
 ```
 
+
+Settings
+-------
+
+To configure the ClearSale, go to /admin/clear_sale_settings/edit (or access by the menu in configurations > ClearSale Settings).
+To set the settings through a config file, you can assign values to the settings like so:
+
+```ruby
+Spree::ClearSaleConfig[:token] = 'asd-123'
+```
+
+See all settings in /lib/spree/clear_sale_configuration.rb
+
+If your customer has the attribute birth date (using the gem spree_zaez_brazilian_fields for example), you could set by the setting:
+
+```ruby
+Spree::ClearSaleConfig[:birth_date_customer_attr]
+```
+
+
+Deface
+-------
+
+```
+Backend
+* replace_considered_risky_column     -> spree/admin/orders/index.html.erb
+* replace_considered_risky_label      -> spree/admin/orders/index.html.erb
+* add_clear_sale_iframe_to_order_menu -> spree/admin/shared/_order_tabs.html.erb
+* add_clear_sale_settings_tab         -> spree/admin/shared/sub_menu/_configuration.html.erb
+
+Frontend
+* add_constructor_to_form -> spree/address/_form.html.erb
+```
+
+
 Testing
 -------
 
@@ -29,11 +77,5 @@ bundle
 bundle exec rake
 ```
 
-When testing your applications integration with this extension you may use it's factories.
-Simply add this require statement to your spec_helper:
 
-```ruby
-require 'spree_zaez_clearsale/factories'
-```
-
-Copyright (c) 2015 [name of extension creator], released under the New BSD License
+Copyright (c) 2015 Zaez Inovação Digital, released under the New BSD License

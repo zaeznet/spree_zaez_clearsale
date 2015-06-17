@@ -1,0 +1,18 @@
+.p-l-n{
+    padding-left: 0px;
+}
+.p-r-n{
+    padding-right: 0px;
+}
+.label-clearsale-low{
+    background-color: #0094e3;
+}
+.label-clearsale-medium{
+    background-color: #049308;
+}
+.label-clearsale-high{
+    background-color: #f9a202;
+}
+.label-clearsale-critical{
+    background-color: #c60611;
+}

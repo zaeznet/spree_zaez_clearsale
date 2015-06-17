@@ -1,0 +1,36 @@
+pt-BR:
+  clear_sale: ClearSale
+  clear_sale_settings: Configurações ClearSale
+  spree:
+    clear_sale: ClearSale
+    clear_sale_settings: Configurações ClearSale
+    clearsale_score: Risco ClearSale
+    clearsale_score_low: Baixo
+    clearsale_score_medium: Médio
+    clearsale_score_high: Alto
+    clearsale_score_critical: Crítico
+    state: Status
+    state_true:  Habilitado
+    state_false: Desabilitado
+    token: Código de Integração
+    test_mode: Ativar Ambiente de Homologação
+    payment_methods: Tipos de Pagamento
+    doc_customer_attr: Atributo do Cliente que Armazena o Documento (CPF/CNPJ)
+    enable_birth_date: Habilitar atributo do cliente que armazena a data de nascimento
+    birth_date_customer_attr: Atributo do Cliente que Armazena a Data de Nascimento
+    payment_type_1:  Cartão de Crédito
+    payment_type_2:  Boleto Bancário
+    payment_type_3:  Débito bancário
+    payment_type_4:  Débito Bancário – Dinheiro
+    payment_type_5:  Débito Bancário – Cheque
+    payment_type_6:  Transferência Bancária
+    payment_type_7:  Sedex a Cobrar
+    payment_type_8:  Cheque
+    payment_type_9:  Dinheiro
+    payment_type_10: Financiamento
+    payment_type_11: Fatura
+    payment_type_12: Cupom
+    payment_type_13: Multicheque
+    payment_type_14: Outros
+    enable_category_taxonomy: Existe um Taxonomy que representa as categorias
+    category_taxonomy_id: Taxonomy que representa as categorias

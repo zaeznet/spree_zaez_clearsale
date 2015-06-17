@@ -1,0 +1,36 @@
+<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Clear Sale' } %>
+
+<% content_for :page_actions do %>
+    <% if @order.outstanding_balance? && can?(:create, Spree::Payment) %>
+        <span id="new_payment_section">
+      <%= button_link_to Spree.t(:new_payment), new_admin_order_payment_url(@order), class: 'btn-success', icon: 'add' %>
+    </span>
+    <% end %>
+<% end %>
+
+<% content_for :page_title do %>
+    / <%= Spree.t(:payments) %>
+<% end %>
+
+<% @order.payments.each do |payment| %>
+  <% if payment.clearsale_registered? %>
+    <div id="clear_sale_preferences" data-hook="clear_sale_preferences">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">
+            <%= "#{Spree.t(:payment)} #{payment.number}" %>
+          </h1>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <iframe id="iFrameStart" src="<%= "#{@integration_url}#{payment.number}" %>">
+                <p>Seu Browser não suporta iframes</p>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

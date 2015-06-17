@@ -32,6 +32,7 @@ bundle
 bundle exec rails g spree_zaez_clearsale:install
 ```
 
+
 Settings
 -------
 
@@ -75,5 +76,6 @@ First bundle your dependencies, then run `rake`. `rake` will default to building
 bundle
 bundle exec rake
 ```
+
 
 Copyright (c) 2015 Zaez Inovação Digital, released under the New BSD License

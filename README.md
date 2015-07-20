@@ -22,7 +22,7 @@ Installation
 Add spree_zaez_clearsale to your Gemfile:
 
 ```ruby
-gem 'spree_zaez_clearsale'
+gem 'spree_zaez_clearsale', github: 'zaeznet/spree_zaez_clearsale'
 ```
 
 Bundle your dependencies and run the installation generator:

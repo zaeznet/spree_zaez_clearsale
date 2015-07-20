@@ -3,13 +3,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_zaez_clearsale'
   s.version     = '3.0.0'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'Add the ClearSale verification to Spree'
+  s.summary     = 'Add the ClearSale verification to Spree Commerce'
+  s.description = 'Add the ClearSale verification to Spree Commerce'
   s.required_ruby_version = '>= 2.0.0'
 
   s.author    = 'Zaez Team'
   s.email     = 'contato@zaez.net'
-  s.homepage  = 'http://www.spreecommerce.com'
+  s.homepage  = 'https://github.com/zaeznet/spree_zaez_clearsale'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")

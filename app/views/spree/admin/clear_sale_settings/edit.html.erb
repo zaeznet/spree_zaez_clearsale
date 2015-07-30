@@ -46,7 +46,7 @@
             <div class="col-sm-6">
               <%= label_tag(:doc_customer_attr, Spree.t(:doc_customer_attr) + ': ') + tag(:br) %>
               <%= select_tag :doc_customer_attr,
-                             options_for_select(@user_attr.collect { |item| [t(item), item] }, @config.doc_customer_attr),
+                             options_for_select(@user_attr.collect { |item| [Spree.t(item), item] }, @config.doc_customer_attr),
                              class: 'select2', include_blank: true %>
             </div>
           </div>
@@ -64,7 +64,7 @@
               </div>
               <div class="col-sm-12 p-l-n p-r-n" id="birth_date_container">
                 <%= select_tag :birth_date_customer_attr,
-                               options_for_select(@user_attr.collect { |item| [t(item), item] }, @config.birth_date_customer_attr),
+                               options_for_select(@user_attr.collect { |item| [Spree.t(item), item] }, @config.birth_date_customer_attr),
                                class: 'select2', include_blank: true %>
               </div>
             </div>

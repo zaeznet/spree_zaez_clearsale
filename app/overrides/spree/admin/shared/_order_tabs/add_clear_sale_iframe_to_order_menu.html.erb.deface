@@ -1,5 +1,5 @@
 <!-- insert_before "erb[silent]:contains('if can? :index, Spree::ReturnAuthorization')" -->
-<% if can?(:edit, Spree::Payment) and payments_registered_in_clearsale? %>
+<% if can?(:clear_sale, Spree::Payment) and payments_registered_in_clearsale? %>
     <li<%== 'class="active"' if current == 'Clear Sale' %> data-hook='admin_order_tabs_clearsale'>
       <%= link_to_with_icon 'lock', Spree.t(:clear_sale), spree.admin_order_payments_clear_sale_url(@order) %>
     </li>

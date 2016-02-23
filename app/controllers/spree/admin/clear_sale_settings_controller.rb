@@ -15,6 +15,8 @@ class Spree::Admin::ClearSaleSettingsController < Spree::Admin::BaseController
       config[name] = value
     end
 
+    config[:test_mode] = false unless params.has_key? :test_mode
+
     # adiciona os providers na preference
     # junto de seu tipo de pagamento
     if params[:providers].present?

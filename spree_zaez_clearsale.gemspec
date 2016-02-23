@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_zaez_clearsale'
-  s.version     = '3.0.2'
+  s.version     = '3.0.3'
   s.summary     = 'Add the ClearSale verification to Spree Commerce'
   s.description = 'Add the ClearSale verification to Spree Commerce'
   s.required_ruby_version = '>= 2.0.0'
@@ -36,4 +36,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-shell'
   s.add_development_dependency 'webmock'
   s.add_development_dependency 'better_errors'
+  s.add_development_dependency 'binding_of_caller'
 end

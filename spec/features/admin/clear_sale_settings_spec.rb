@@ -70,6 +70,13 @@ describe 'ClearSale Settings', type: :feature do
       expect(Spree::ClearSaleConfig.test_mode).to be true
       expect(find_field('test_mode')).to be_checked
 
+      # Test if the attribute can be false
+      find(:css, '#test_mode').set false
+      click_button 'Update'
+
+      expect(Spree::ClearSaleConfig.test_mode).to be false
+      expect(find_field('test_mode')).not_to be_checked
+
       # set default
       Spree::ClearSaleConfig.test_mode = false
     end
